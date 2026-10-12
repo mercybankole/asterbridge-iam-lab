@@ -37,7 +37,6 @@ Both users also belong to `GRP-CORP-AllStaff`. Folder permissions were applied t
 
 **Result: 6 of 6 core functional tests met their expected outcomes.** Additional checks confirmed Samuel's clinic group membership and denial of Kitchener directory listing.
 
-![NTFS folder ACL verification](evidence/E03-ntfs-permissions.png)
 
 ## Evidence and documentation
 
