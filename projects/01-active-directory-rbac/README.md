@@ -17,11 +17,18 @@ The configuration and tests were performed in Oracle VirtualBox using Windows Se
 
 ## Environment build
 
-The screenshots below show the Active Directory structure used for the lab, including the Asterbridge organizational units, departmental structure, security groups and sample employee accounts.
+Screenshots from the Active Directory lab, showing the organizational structure, security groups and provisioned users.
 
-<img src="evidence/E09-asterbridge-ou-structure.png" alt="Asterbridge organizational units in Active Directory Users and Computers" width="540">
-
-[Eight department OUs](evidence/E10-eight-department-ous.png) · [Security groups](evidence/E11-ad-security-groups.png) · [Eight enabled employee accounts](evidence/E01-enabled-users.png)
+<table>
+<tr>
+<td width="50%" valign="top"><strong>Asterbridge organizational units</strong><br><a href="evidence/E09-asterbridge-ou-structure.png"><img src="evidence/E09-asterbridge-ou-structure.png" alt="Asterbridge core OUs in Active Directory" width="400"></a></td>
+<td width="50%" valign="top"><strong>Eight departments</strong><br><a href="evidence/E10-eight-department-ous.png"><img src="evidence/E10-eight-department-ous.png" alt="Eight organizational units under Employees" width="400"></a></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><strong>Role-based security groups</strong><br><a href="evidence/E11-ad-security-groups.png"><img src="evidence/E11-ad-security-groups.png" alt="Asterbridge AD security groups" width="400"></a></td>
+<td width="50%" valign="top"><strong>Eight enabled employee accounts</strong><br><a href="evidence/E01-enabled-users.png"><img src="evidence/E01-enabled-users.png" alt="PowerShell verification of eight sample employee accounts" width="400"></a></td>
+</tr>
+</table>
 
 ## Access design
 
@@ -45,18 +52,33 @@ Both users also belong to `GRP-CORP-AllStaff`. Folder permissions were applied t
 
 **Result: 6 of 6 core functional tests met their expected outcomes.** Additional checks confirmed Samuel's clinic group membership and denial of Kitchener directory listing.
 
-## Evidence and documentation
+## Test evidence
+
+These screenshots show the configured permissions and the actual allowed or denied operations. Select an image to enlarge it.
+
+<table>
+<tr>
+<td width="50%" valign="top"><strong>Domain sign-in and group membership</strong><br><a href="evidence/E02-hannah-groups.png"><img src="evidence/E02-hannah-groups.png" alt="Hannah domain identity and security groups" width="400"></a></td>
+<td width="50%" valign="top"><strong>NTFS permission configuration</strong><br><a href="evidence/E03-ntfs-permissions.png"><img src="evidence/E03-ntfs-permissions.png" alt="Kitchener and Hamilton NTFS ACL configurations" width="400"></a></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><strong>Hannah: authorized and denied operations</strong><br><a href="evidence/E04-hannah-tests.png"><img src="evidence/E04-hannah-tests.png" alt="Hannah Kitchener success and Hamilton access denied" width="400"></a></td>
+<td width="50%" valign="top"><strong>Hannah: Hamilton folder restricted</strong><br><a href="evidence/E05-hannah-hamilton-denied.png"><img src="evidence/E05-hannah-hamilton-denied.png" alt="Windows permission warning for Hamilton folder" width="400"></a></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><strong>Samuel: authorized and denied operations</strong><br><a href="evidence/E06-samuel-tests.png"><img src="evidence/E06-samuel-tests.png" alt="Samuel Hamilton success and Kitchener access denied" width="400"></a></td>
+<td width="50%" valign="top"><strong>Samuel: group membership and list denial</strong><br><a href="evidence/E07-samuel-groups-denial.png"><img src="evidence/E07-samuel-groups-denial.png" alt="Samuel group membership and denied Kitchener listing" width="400"></a></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><strong>Kitchener test file</strong><br><a href="evidence/E08-kitchener-file.png"><img src="evidence/E08-kitchener-file.png" alt="Hannah's test file visible inside Kitchener folder" width="400"></a></td>
+<td width="50%"></td>
+</tr>
+</table>
+
+## Report and procedures
 
 - [RBAC test report (PDF)](report/asterbridge-rbac-test-report.pdf)
-- [Command reference and test procedure](docs/lab-commands.md)
-- [NTFS permission configuration](evidence/E03-ntfs-permissions.png)
-- [Enabled sample accounts](evidence/E01-enabled-users.png)
-- [Hannah's domain identity and groups](evidence/E02-hannah-groups.png)
-- [Hannah's allowed and denied PowerShell tests](evidence/E04-hannah-tests.png)
-- [Hannah's denied Hamilton folder access](evidence/E05-hannah-hamilton-denied.png)
-- [Samuel's allowed and denied PowerShell tests](evidence/E06-samuel-tests.png)
-- [Samuel's group and directory-listing checks](evidence/E07-samuel-groups-denial.png)
-- [Kitchener test file in File Explorer](evidence/E08-kitchener-file.png)
+- [PowerShell commands and test procedures](docs/lab-commands.md)
 
 ## What I learned
 
