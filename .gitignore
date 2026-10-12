@@ -1,0 +1,14 @@
+# Do not publish passwords, keys, VM disks or raw lab exports
+*.vdi
+*.vmdk
+*.ova
+*.ovf
+*.iso
+*.pfx
+*.p12
+*.key
+*.kdbx
+.env
+.env.*
+*password*.txt
+*secret*.txt
