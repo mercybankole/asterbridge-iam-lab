@@ -36,7 +36,9 @@ The scripts were executed in an isolated environment using Windows Server 2022, 
 
 <table><tr><td width="50%" valign="top"><strong>Account disabled and groups removed</strong><br><a href="evidence/JML-E05-offboarding-directory.png"><img src="evidence/JML-E05-offboarding-directory.png" width="390"></a></td><td width="50%" valign="top"><strong>Fresh sign-in rejected</strong><br><a href="evidence/JML-E07-disabled-login-rejected.png"><img src="evidence/JML-E07-disabled-login-rejected.png" width="390"></a></td></tr></table>
 
-[Domain controller connectivity checks](evidence/JML-E06-domain-connectivity.png)
+<strong>Domain controller connectivity checks</strong>
+
+<a href="evidence/JML-E06-domain-connectivity.png"><img src="evidence/JML-E06-domain-connectivity.png" alt="Domain controller discovery and LDAP connectivity tests" width="390"></a>
 
 ## Scripts and documentation
 
