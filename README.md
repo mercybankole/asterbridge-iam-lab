@@ -9,6 +9,6 @@ The labs use real configurations and tests in isolated environments. Employee id
 | Project | Focus | Status |
 | --- | --- | --- |
 | [01. Active Directory & Role-Based Access Control](projects/01-active-directory-rbac/) | Domain accounts, security groups, NTFS permissions and access testing | Completed |
-| 02. User Lifecycle Management | Joiner, mover and leaver automation with PowerShell | In progress |
+| [02. User Lifecycle Management](projects/02-user-lifecycle-management/) | PowerShell joiner, mover and leaver automation | Completed lab; evidence upload pending |
 
 **Environment:** Oracle VirtualBox, Windows Server 2022, Windows 10 Pro, Active Directory Domain Services and PowerShell.
