@@ -15,6 +15,14 @@ The configuration and tests were performed in Oracle VirtualBox using Windows Se
 - Configured NTFS Modify permissions for separate Kitchener and Hamilton front-desk folders.
 - Tested domain sign-in and allowed and denied file operations using two receptionist accounts.
 
+## Environment build
+
+The screenshots below show the Active Directory structure used for the lab, including the Asterbridge organizational units, departmental structure, security groups and sample employee accounts.
+
+<img src="evidence/E09-asterbridge-ou-structure.png" alt="Asterbridge organizational units in Active Directory Users and Computers" width="540">
+
+[Eight department OUs](evidence/E10-eight-department-ous.png) · [Security groups](evidence/E11-ad-security-groups.png) · [Eight enabled employee accounts](evidence/E01-enabled-users.png)
+
 ## Access design
 
 | Role | Assigned group | Authorized lab folder |
@@ -37,11 +45,11 @@ Both users also belong to `GRP-CORP-AllStaff`. Folder permissions were applied t
 
 **Result: 6 of 6 core functional tests met their expected outcomes.** Additional checks confirmed Samuel's clinic group membership and denial of Kitchener directory listing.
 
-
 ## Evidence and documentation
 
 - [RBAC test report (PDF)](report/asterbridge-rbac-test-report.pdf)
 - [Command reference and test procedure](docs/lab-commands.md)
+- [NTFS permission configuration](evidence/E03-ntfs-permissions.png)
 - [Enabled sample accounts](evidence/E01-enabled-users.png)
 - [Hannah's domain identity and groups](evidence/E02-hannah-groups.png)
 - [Hannah's allowed and denied PowerShell tests](evidence/E04-hannah-tests.png)
