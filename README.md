@@ -10,6 +10,6 @@ The labs use real configurations and tests in isolated environments. Employee id
 | --- | --- | --- |
 | [01. Active Directory & Role-Based Access Control](projects/01-active-directory-rbac/) | Domain accounts, security groups, NTFS permissions and access testing | Completed |
 | [02. User Lifecycle Management](projects/02-user-lifecycle-management/) | PowerShell joiner, mover and leaver automation | Completed |
-| [03. Access Reviews & IAM Audit](projects/03-access-reviews-iam-audit/) | Access certification, exception detection and remediation | Completed lab; evidence upload pending |
+| [03. Access Reviews & IAM Audit](projects/03-access-reviews-iam-audit/) | Access certification, exception detection and remediation | Completed |
 
 **Environment:** Oracle VirtualBox, Windows Server 2022, Windows 10 Pro, Active Directory Domain Services and PowerShell.
