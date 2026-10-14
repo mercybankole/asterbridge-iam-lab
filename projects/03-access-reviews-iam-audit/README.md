@@ -2,65 +2,65 @@
 
 ## Overview
 
-I performed a simulated access certification for Asterbridge Care Technologies, a fictional healthcare technology company. Using Active Directory and PowerShell, I inventoried nine employee identities, compared role-group memberships with a predefined access matrix and tested whether an intentionally excessive group assignment would be detected and removed.
+I reviewed user access for Asterbridge Care Technologies, a fictional healthcare technology company. Using Active Directory and PowerShell, I compared nine accounts against a role-access list. I then added an incorrect group membership to see whether the review would detect it and whether it affected file access.
 
-The environment is an isolated VirtualBox lab using Windows Server 2022, Active Directory and a domain-joined Windows 10 Pro workstation.
+I ran the lab in VirtualBox with Windows Server 2022 and a domain-joined Windows 10 workstation.
 
 ## What I did
 
-- Inventoried **nine in-scope accounts**: eight enabled, one disabled.
-- Collected an additional read-only privileged group inventory for separate review.
-- Compared employee `GRP-*` memberships with a simulated role-access matrix.
-- Introduced a controlled cross-clinic access exception for a Kitchener receptionist.
-- Confirmed the exception was detected and demonstrated that it allowed access to a Hamilton test folder.
-- Removed the unauthorized membership, refreshed the workstation session and confirmed access was restricted again.
-- Preserved baseline, exception and post-remediation CSV reports.
+- Collected nine user accounts and their assigned `GRP-*` security groups.
+- Compared their memberships with the access expected for their roles.
+- Reviewed privileged group memberships separately.
+- Added Hannah Reid, a Kitchener receptionist, to the Hamilton Front Desk group as a test.
+- Detected the extra access, then confirmed she could create and read a file in the Hamilton folder.
+- Removed the extra membership and tested the folder permissions again after a fresh sign-in.
+- Saved the baseline, exception and final access review results as CSV files.
 
-## Technical test results
+## Results
 
-| Point in the review | Matching accounts | Exceptions |
+| Review | Accounts matching | Exceptions |
 | --- | ---: | ---: |
-| Initial baseline | 9 / 9 | 0 |
-| After controlled group assignment | 8 / 9 | 1 |
-| After remediation | 9 / 9 | 0 |
+| Before the test | 9 / 9 | 0 |
+| After adding the extra group | 8 / 9 | 1 |
+| After removing the extra group | 9 / 9 | 0 |
 
-The detected exception was Hannah Reid's additional `GRP-CLINIC-HAM-FrontDesk` membership. All original `ReviewerDecision` values remain **Pending**. The automated comparison was completed; formal access-owner certification was **not** performed.
+The exception was Hannah's additional `GRP-CLINIC-HAM-FrontDesk` membership. These results show a technical comparison against the lab's role-access list. The reviewer decisions are still marked `Pending`; no manager sign-off was performed.
 
-## Build and detection evidence
-
-<table>
-<tr><td width="50%" valign="top"><strong>Identity population</strong><br><a href="evidence/E01-identity-inventory.png"><img src="evidence/E01-identity-inventory.png" width="390" alt="Nine in-scope Active Directory users"></a></td><td width="50%" valign="top"><strong>Clean role baseline</strong><br><a href="evidence/E02-clean-certification.png"><img src="evidence/E02-clean-certification.png" width="390" alt="Nine technical access matches"></a></td></tr>
-<tr><td width="50%" valign="top"><strong>Controlled Hamilton group assignment</strong><br><a href="evidence/E03-controlled-group-assignment.png"><img src="evidence/E03-controlled-group-assignment.png" width="390" alt="Deliberate Hamilton group assignment"></a></td><td width="50%" valign="top"><strong>Access review exception detected</strong><br><a href="evidence/E04-exception-detected.png"><img src="evidence/E04-exception-detected.png" width="390" alt="Hannah flagged with excess access"></a></td></tr>
-</table>
-
-## Effective access and remediation evidence
+## Access review evidence
 
 <table>
-<tr><td width="50%" valign="top"><strong>Updated Windows group token</strong><br><a href="evidence/E05-fresh-token-both-clinics.png"><img src="evidence/E05-fresh-token-both-clinics.png" width="390" alt="Hannah token includes two clinic role groups"></a></td><td width="50%" valign="top"><strong>Hamilton file access succeeded</strong><br><a href="evidence/E06-cross-clinic-access-confirmed.png"><img src="evidence/E06-cross-clinic-access-confirmed.png" width="390" alt="Read and write tests in Hamilton folder"></a></td></tr>
-<tr><td width="50%" valign="top"><strong>Unauthorized membership removed</strong><br><a href="evidence/E07-hamilton-membership-removed.png"><img src="evidence/E07-hamilton-membership-removed.png" width="390" alt="Active Directory membership after remediation"></a></td><td width="50%" valign="top"><strong>Hamilton access denied after fresh sign-in</strong><br><a href="evidence/E08-hamilton-denied-post-remediation.png"><img src="evidence/E08-hamilton-denied-post-remediation.png" width="390" alt="Hamilton denied and Kitchener allowed"></a></td></tr>
+<tr><td width="50%" valign="top">Identity population<br><a href="evidence/E01-identity-inventory.png"><img src="evidence/E01-identity-inventory.png" width="390" alt="Nine in-scope Active Directory users"></a></td><td width="50%" valign="top">Clean role baseline<br><a href="evidence/E02-clean-certification.png"><img src="evidence/E02-clean-certification.png" width="390" alt="Nine technical access matches"></a></td></tr>
+<tr><td width="50%" valign="top">Controlled Hamilton group assignment<br><a href="evidence/E03-controlled-group-assignment.png"><img src="evidence/E03-controlled-group-assignment.png" width="390" alt="Deliberate Hamilton group assignment"></a></td><td width="50%" valign="top">Access review exception detected<br><a href="evidence/E04-exception-detected.png"><img src="evidence/E04-exception-detected.png" width="390" alt="Hannah flagged with excess access"></a></td></tr>
 </table>
 
-**Final certification: Nine accounts match the role matrix again.**
+## Access testing and remediation
 
-<a href="evidence/E09-clean-post-remediation.png"><img src="evidence/E09-clean-post-remediation.png" width="390" alt="Post-remediation access certification showing nine matches and no excessive group assignments"></a>
+<table>
+<tr><td width="50%" valign="top">Updated Windows group token<br><a href="evidence/E05-fresh-token-both-clinics.png"><img src="evidence/E05-fresh-token-both-clinics.png" width="390" alt="Hannah token includes two clinic role groups"></a></td><td width="50%" valign="top">Hamilton file access succeeded<br><a href="evidence/E06-cross-clinic-access-confirmed.png"><img src="evidence/E06-cross-clinic-access-confirmed.png" width="390" alt="Read and write tests in Hamilton folder"></a></td></tr>
+<tr><td width="50%" valign="top">Unauthorized membership removed<br><a href="evidence/E07-hamilton-membership-removed.png"><img src="evidence/E07-hamilton-membership-removed.png" width="390" alt="Active Directory membership after remediation"></a></td><td width="50%" valign="top">Hamilton access denied after fresh sign-in<br><a href="evidence/E08-hamilton-denied-post-remediation.png"><img src="evidence/E08-hamilton-denied-post-remediation.png" width="390" alt="Hamilton denied and Kitchener allowed"></a></td></tr>
+</table>
 
-## Files and documentation
+Final check: all nine accounts matched the role-access list again.
 
-- [IAM access-review test report (PDF)](report/Asterbridge_Project03_IAM_Access_Review_Report_v1.0.pdf)
-- [Review notes, evidence definitions and limitations](docs/README-review-notes.md)
-- [Read-only PowerShell reference script](scripts/Export-ADAccessCertification.ps1)
-- [Source CSV: account inventory](data/AD-Access-Inventory.csv)
-- [Clean access certification](data/Access-Certification-Baseline.csv)
-- [Exception detected](data/Access-Certification-Exception.csv)
-- [Certification after remediation](data/Access-Certification-PostRemediation.csv)
-- [Simulated role-access baseline](data/Simulated-Role-Baseline.csv)
+<a href="evidence/E09-clean-post-remediation.png"><img src="evidence/E09-clean-post-remediation.png" width="390" alt="Final access review showing nine matches"></a>
 
-The PowerShell file is a **reconstructed reference script** based on the interactive lab commands. It is not presented as separately tested automation.
+## Files
+
+- [Access review report (PDF)](report/Asterbridge_Project03_IAM_Access_Review_Report_v1.0.pdf)
+- [Review notes](docs/README-review-notes.md)
+- [PowerShell reference script](scripts/Export-ADAccessCertification.ps1)
+- [AD account inventory](data/AD-Access-Inventory.csv)
+- [Baseline access review](data/Access-Certification-Baseline.csv)
+- [Access review with the exception](data/Access-Certification-Exception.csv)
+- [Post-remediation access review](data/Access-Certification-PostRemediation.csv)
+- [Role-access list used for this lab](data/Simulated-Role-Baseline.csv)
+
+The PowerShell reference script was put together from the commands I ran during the exercise. I haven't tested that file as a standalone script.
 
 ## What I learned
 
-A successful directory update is not always equivalent to an immediate change in a signed-in user's effective access. In this lab, fresh Windows sign-ins were important for testing updated group memberships. Comparing permissions, demonstrating their effect and retesting after remediation produced clearer evidence than group-membership screenshots alone.
+I learned why checking group memberships alone isn't enough. Hannah's extra membership gave her access to the Hamilton folder, which I confirmed by creating and reading a test file. After removing the membership, I signed her out and back in so Windows would pick up the change. Hamilton access was then denied, while Kitchener access still worked.
 
 ## Scope and limits
 
-Asterbridge and all employee identities are fictional. The test focused on Asterbridge OU users, groups beginning `GRP-*` and two local NTFS clinic test folders. It did not establish permissions for clinical applications, cloud accounts or every domain group. The privileged-access inventory was kept in an internal workbook rather than published with administrative login identifiers. Framework references in the report are illustrative; they do not establish SOC 2 or ISO certification.
+This was a lab using fictional employees and test files. I reviewed nine accounts in the Asterbridge OU and groups beginning with `GRP-`. I tested folder access on one Windows 10 workstation, not clinical applications or cloud services. The privileged-account inventory is kept in my internal workbook. This exercise did not include a formal manager access review.
