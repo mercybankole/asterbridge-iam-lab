@@ -1,0 +1,10 @@
+Username,ExpectedAccess,ExpectedEnabled
+aclarke,GRP-CORP-AllStaff; GRP-CLINIC-KIT-Manager,True
+epark,GRP-CORP-AllStaff; GRP-IT-Helpdesk,True
+hreid,GRP-CORP-AllStaff; GRP-CLINIC-KIT-FrontDesk,True
+jcole,GRP-CORP-AllStaff; GRP-CLINIC-HAM-Clinician,True
+mlee,GRP-CORP-AllStaff; GRP-CLINIC-KIT-Clinician,True
+nkapoor,GRP-CORP-AllStaff; GRP-CLINIC-HAM-Manager,True
+obennett,,False
+rsingh,GRP-CORP-AllStaff,True
+sortiz,GRP-CORP-AllStaff; GRP-CLINIC-HAM-FrontDesk,True
