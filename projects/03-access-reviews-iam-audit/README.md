@@ -40,7 +40,9 @@ The detected exception was Hannah Reid's additional `GRP-CLINIC-HAM-FrontDesk` m
 <tr><td width="50%" valign="top"><strong>Unauthorized membership removed</strong><br><a href="evidence/E07-hamilton-membership-removed.png"><img src="evidence/E07-hamilton-membership-removed.png" width="390" alt="Active Directory membership after remediation"></a></td><td width="50%" valign="top"><strong>Hamilton access denied after fresh sign-in</strong><br><a href="evidence/E08-hamilton-denied-post-remediation.png"><img src="evidence/E08-hamilton-denied-post-remediation.png" width="390" alt="Hamilton denied and Kitchener allowed"></a></td></tr>
 </table>
 
-**Final certification:** [Nine accounts again match the defined role matrix](evidence/E09-clean-post-remediation.png).
+**Final certification: Nine accounts match the role matrix again.**
+
+<a href="evidence/E09-clean-post-remediation.png"><img src="evidence/E09-clean-post-remediation.png" width="390" alt="Post-remediation access certification showing nine matches and no excessive group assignments"></a>
 
 ## Files and documentation
 
