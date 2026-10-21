@@ -63,6 +63,39 @@ No privileges were granted. The fictional review concluded with a decision to de
 - [Troubleshooting and access-request runbooks](docs/runbooks.md)
 - [Evidence inventory](evidence/README.md)
 
+## Evidence gallery
+
+These are cropped screenshots from the lab. The MFA setup QR code is excluded, and System Log event excerpts omit connection IP addresses and detailed identifiers. Click each image to expand. See the [evidence index](evidence/README.md) for a file-by-file description.
+
+### AIT-1 — Application access investigation
+
+<table>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-1-01-jira-request.webp"><img src="evidence/AIT-1-01-jira-request.webp" width="425" alt="Reported access issue recorded in Jira"></a><br><sub>Reported access issue recorded in Jira</sub></td><td width="50%" valign="top"><a href="evidence/AIT-1-02-ad-group-removed.webp"><img src="evidence/AIT-1-02-ad-group-removed.webp" width="425" alt="Front Desk group removed in AD"></a><br><sub>Front Desk group removed in AD</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-1-03-okta-assignment-removed.webp"><img src="evidence/AIT-1-03-okta-assignment-removed.webp" width="425" alt="No app assignment after AD import"></a><br><sub>No app assignment after AD import</sub></td><td width="50%" valign="top"><a href="evidence/AIT-1-04-okta-assignment-restored.webp"><img src="evidence/AIT-1-04-okta-assignment-restored.webp" width="425" alt="Group-based assignment restored"></a><br><sub>Group-based assignment restored</sub></td></tr>
+</table>
+
+### AIT-2 — New employee onboarding
+
+<table>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-2-01-jira-onboarding.webp"><img src="evidence/AIT-2-01-jira-onboarding.webp" width="425" alt="Simulated HR onboarding request in Jira"></a><br><sub>Simulated HR onboarding request in Jira</sub></td><td width="50%" valign="top"><a href="evidence/AIT-2-02-ad-role-groups.webp"><img src="evidence/AIT-2-02-ad-role-groups.webp" width="425" alt="Jordan's AD role groups"></a><br><sub>Jordan's AD role groups</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-2-03-okta-groups.webp"><img src="evidence/AIT-2-03-okta-groups.webp" width="425" alt="AD groups reflected in Okta"></a><br><sub>AD groups reflected in Okta</sub></td><td width="50%" valign="top"><a href="evidence/AIT-2-04-okta-app-assignment.webp"><img src="evidence/AIT-2-04-okta-app-assignment.webp" width="425" alt="Front Desk Portal assigned through group"></a><br><sub>Front Desk Portal assigned through group</sub></td></tr>
+</table>
+
+### AIT-3 — MFA enrollment and recovery
+
+<table>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-3-01-no-enrolled-authenticators.webp"><img src="evidence/AIT-3-01-no-enrolled-authenticators.webp" width="425" alt="Initial state: no enrolled authenticators"></a><br><sub>Initial state: no enrolled authenticators</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-02-mfa-success-log.webp"><img src="evidence/AIT-3-02-mfa-success-log.webp" width="425" alt="Successful MFA and user login events before reset"></a><br><sub>Successful MFA and user login events before reset</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-3-03-reset-confirmation.webp"><img src="evidence/AIT-3-03-reset-confirmation.webp" width="425" alt="Administrator-initiated reset acknowledged"></a><br><sub>Administrator-initiated reset acknowledged</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-04-reenrollment-prompt.webp"><img src="evidence/AIT-3-04-reenrollment-prompt.webp" width="425" alt="Windows Okta Verify requests re-enrollment"></a><br><sub>Windows Okta Verify requests re-enrollment</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-3-05-reenrolled-authenticator.webp"><img src="evidence/AIT-3-05-reenrolled-authenticator.webp" width="425" alt="New Okta Verify enrollment confirmed"></a><br><sub>New Okta Verify enrollment confirmed</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-06-reenrollment-log.webp"><img src="evidence/AIT-3-06-reenrollment-log.webp" width="425" alt="Factor activated and device added successfully"></a><br><sub>Factor activated and device added successfully</sub></td></tr>
+</table>
+
+### AIT-4 — Privileged-access decision
+
+<table>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-4-01-jira-privileged-request.webp"><img src="evidence/AIT-4-01-jira-privileged-request.webp" width="425" alt="Super Administrator request in Jira"></a><br><sub>Super Administrator request in Jira</sub></td><td width="50%" valign="top"><a href="evidence/AIT-4-02-no-individual-admin-roles.webp"><img src="evidence/AIT-4-02-no-individual-admin-roles.webp" width="425" alt="No individual Okta admin roles shown"></a><br><sub>No individual Okta admin roles shown</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-4-03-jira-cancellation-form.webp"><img src="evidence/AIT-4-03-jira-cancellation-form.webp" width="425" alt="Jira cancellation resolution field blocked closure"></a><br><sub>Jira cancellation resolution field blocked closure</sub></td><td width="50%"></td></tr>
+</table>
+
 ## What I learned
 
 The support process matters as much as the technical change. For each request, I practiced documenting what I checked, separating a user's report from findings, verifying changes in both AD and Okta, and avoiding unnecessary privilege grants.
@@ -73,4 +106,4 @@ I also learned to distinguish successful MFA enrollment from successful authenti
 
 This project is a personal lab, not employment experience or a production service desk. Jira employee requests, responses, approvals and escalations were simulated. No real HR or Security team authorized the changes. The Okta Bookmark App does not implement real SSO or production authorization. I used manual AD imports and did not measure response-time SLAs, conduct Mac/MDM troubleshooting or test 40 SaaS applications.
 
-Screenshots are being collected and reviewed before publication so that authenticator secrets, tokens and unrelated account details are not disclosed.
+Selected screenshots are published in the evidence gallery. They are cropped to relevant results and omit enrollment QR codes. System Log excerpts have connection IP addresses and detailed identifiers removed.
