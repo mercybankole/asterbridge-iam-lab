@@ -1,41 +1,31 @@
-# Troubleshooting and Access Request Runbooks
+# IT support runbooks
 
-These procedures describe controlled support workflows for the Asterbridge lab, not a production organization's approved procedures.
+These are the steps I used to guide the support scenarios in this project.
 
-## Runbook 1: User cannot see an assigned Okta application
+## Application access issue
 
-**Intake:** Record user, application, impact, onset, error message and whether multiple users are affected.
+1. Record the application, error, affected employee and business impact in Jira.
+2. Check the employee's account status in AD and Okta.
+3. Check the AD group, its membership in Okta and the source of the application assignment.
+4. Review recent changes and run an authorized AD import when needed.
+5. Correct the group membership at its source, then verify the assignment again.
+6. Record the findings and the employee-facing update in Jira.
 
-**Verify:** Confirm the requester's identity using an approved method before any account change. Check AD account status, relevant AD groups, Okta account status, synchronized group membership and the application assignment source. Compare against an access matrix or approval.
+## MFA enrollment or recovery
 
-**Investigate:** Check recent group/assignment changes and relevant Okta events. Determine whether the assignment is direct or group-based; check whether an AD import has run. Do not assume a missing tile means application authentication itself failed.
+1. Confirm the employee's identity using the approved support process.
+2. Check account status, authenticator enrollment and the relevant Okta policies.
+3. Review the error and System Log before making a change.
+4. For an approved reset, select only the affected authenticator.
+5. Guide enrollment on the replacement or authorized device.
+6. Confirm enrollment and have the employee sign in again; inspect the resulting authentication events.
+7. Record the action, verification and any unresolved issue in Jira.
 
-**Remediate:** Restore only authorized group-based access at the source of truth; import/synchronize as appropriate. Escalate unexpected or unauthorized privilege changes.
+## Privileged access request
 
-**Validate:** Confirm app assignment returns and, for a real integrated application, have the requester test access. Keep assignment verification separate from production app sign-in. Add internal notes and a user-facing update; close only against a supported resolution.
-
-## Runbook 2: User cannot complete MFA / lost authenticator
-
-**Intake:** Record device availability, exact challenge, last successful login, and urgency without asking for passwords, codes or recovery secrets.
-
-**Identity verification:** Follow the organization's approved recovery method before resetting factors. An email or chat request alone is not sufficient.
-
-**Investigate:** Check account status, authenticator enrollment, applicable enrollment and authentication policies, and relevant System Log events. Distinguish 403 admin-app authorization issues from incorrect-password or MFA problems.
-
-**Remediate:** If approved, reset only the unavailable authenticator, not unrelated security methods. Guide the user through enrollment on an authorized compatible device; avoid changing global policy to make one case pass.
-
-**Validate:** Confirm new enrollment in Okta, successful new sign-in with the recovered factor, and corresponding System Log events. If the fresh post-reset test was not run, state that limitation explicitly.
-
-**Escalate:** Suspicious login history, inability to verify identity, missing compliant device, policy constraints, or repeated unexplained failures require the Security/IAM team.
-
-## Runbook 3: Privileged access request
-
-**Intake:** Capture requested system, specific work to be performed, role, justification, manager, approval evidence and required duration.
-
-**Evaluate:** Compare scope to job responsibilities and least privilege. Confirm correct approving authority and whether existing IT Support can perform the task without granting requester admin privileges.
-
-**Decision:** Withhold access if approval is missing or role is excessive. Seek a narrower time-bound role when justified and approved. Never provision a Super Administrator role solely for single-application troubleshooting.
-
-**Verify:** Review direct and group-based role sources where applicable; record changes and approval evidence. In the AIT-4 exercise, only individual admin assignments were inspected.
-
-**Close or escalate:** Communicate decision, retain an audit trail and accurately record whether the ticket was declined, left pending, or successfully transitioned. Do not claim an approval or Jira closure that was not performed.
+1. Record the requested system, role, reason and access duration.
+2. Check whether manager and Security approvals are present.
+3. Compare the requested role with the specific task and existing permissions.
+4. If the role is excessive or authorization is missing, withhold access and explain what is needed.
+5. Consider a narrower role or have IT carry out the task directly.
+6. Record the decision, access status and any outstanding approvals in Jira.
