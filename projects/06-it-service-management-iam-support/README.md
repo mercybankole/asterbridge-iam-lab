@@ -2,108 +2,64 @@
 
 ## Overview
 
-I used Jira Service Management and my existing Asterbridge Active Directory–Okta lab to work through four fictional IT support requests. The goal was to practice handling requests from intake through investigation, access decisions, technical changes and documentation.
+I used Jira Service Management, Active Directory and Okta to work through four IT support requests for Asterbridge Care Technologies. I recorded each request in Jira, investigated it and documented the result.
 
-Asterbridge Care Technologies is a fictional healthcare technology company. The Jira tickets, employee requests and approvals are simulated. The Active Directory, Okta and Windows configurations and the test results described below came from hands-on lab work.
+The employees and support requests are fictional. I carried out the technical steps in my Asterbridge lab.
 
 ## Environment
 
-- Jira Service Management: Asterbridge IT Service Desk (project key `AIT`)
-- Windows Server 2022 with Active Directory Domain Services in Oracle VirtualBox
-- Azure-hosted Windows Server running the Okta AD Agent, connected to the lab through Tailscale
-- Okta trial organization with AD-sourced identities and groups
-- Okta Verify for Windows 11 and Windows Hello
+- Jira Service Management, Asterbridge IT Service Desk
+- Active Directory on Windows Server 2022 in Oracle VirtualBox
+- Okta AD Agent on an Azure Windows Server connected through Tailscale
+- Okta, Okta Verify for Windows 11 and Windows Hello
 
-The IAM environment was built in [Project 04: Hybrid Active Directory & Okta IAM](../04-okta-hybrid-iam/). This project focuses on the support workflow built around that environment.
-
-## Support cases
-
-| Ticket | Request | Work completed | Outcome |
-| --- | --- | --- | --- |
-| AIT-1 | Front Desk Portal access issue | Checked account status, AD/Okta group membership and app assignment; deliberately removed and restored an AD group in the lab | Verified group removal and restoration changed the Okta Bookmark App assignment |
-| AIT-2 | Front Desk employee onboarding | Created Jordan Ellis in AD, applied corporate and Front Desk groups, imported into Okta and reviewed assignments | AD-sourced account Active in Okta; expected groups and application assignment present |
-| AIT-3 | MFA recovery after device change | Investigated an admin-console 403, reviewed enrollment policy, enrolled Okta Verify for Windows, tested MFA, reset and re-enrolled it | Successful MFA and dashboard sign-in before reset; reset and subsequent re-enrollment confirmed |
-| AIT-4 | Okta Super Administrator request | Reviewed justification and approvals, assessed least privilege and checked Samuel Ortiz's Admin roles tab | Simulated request declined; no individually assigned admin privileges seen; Jira cancellation workflow not completed |
-
-### AIT-1: Application access investigation
-
-The fictional employee reported a missing application, but the initial checks showed an active account, correct AD and Okta group membership and an existing app assignment. I documented that the reported problem was not reproduced.
-
-I then ran a controlled test: removed Samuel Ortiz from `GRP-CLINIC-HAM-FrontDesk` in AD, manually imported the change to Okta and confirmed that the application assignment disappeared while his account remained active. Re-adding the group and importing again restored the group and app assignment.
-
-This was an application **assignment** test using an Okta Bookmark App, not proof of authentication into or enforcement by a production application.
-
-### AIT-2: Employee onboarding
-
-I raised a fictional HR request for Jordan Ellis, a Front Desk Coordinator at Hamilton Clinic. I created the account in AD, assigned `GRP-CORP-AllStaff` and `GRP-CLINIC-HAM-FrontDesk`, and performed an AD import into Okta. Jordan appeared as an active AD-sourced user, with both groups and the Front Desk Portal assigned through the Front Desk group. The Okta trial subsequently reached its 10-active-user limit.
-
-HR authorization was simulated. No production SaaS account provisioning, credential delivery or new-user authentication test was performed.
-
-### AIT-3: MFA enrollment and recovery
-
-The ticket began as a fictional lost-phone report. Inspection showed that Hannah Reid had **no enrolled authenticators**, so the reported recovery problem could not initially be reproduced.
-
-A standard employee sign-in to the Admin Console produced a 403 error indicating no assignment to the client application. Using the employee sign-in route instead, I reviewed the enrollment policy (Okta Verify optional), installed Okta Verify for Windows 11 and enrolled Hannah's lab account.
-
-I verified an Okta System Log event for successful MFA authentication, followed by successful dashboard sign-in. I then reset the Okta Verify enrollment through the Admin Console. The Windows application displayed an MFA-reset warning and offered re-enrollment. Re-enrollment was confirmed in the Admin Console and System Log through successful factor activation and device-add events.
-
-A **fresh post-reset MFA sign-in** was not independently recorded. The exercise simulated recovery of a Windows authenticator, not an actual lost phone.
-
-### AIT-4: Privileged access request
-
-Samuel Ortiz requested ongoing Okta Super Administrator access to troubleshoot one Front Desk application. The request lacked manager and Security approval and did not define an access review or expiration date.
-
-I documented the excessive privilege risk and responded with a least-privilege alternative: have IT troubleshoot the issue, or submit a narrower request with appropriate approvals. Samuel's Admin roles tab showed **no individually assigned administrator privileges**. That check did not establish whether any group-based administrator permissions existed.
-
-No privileges were granted. The fictional review concluded with a decision to decline the request as submitted. Jira's Cancel request dialog required a Resolution value that could not be selected in the lab, so the workflow closure was not confirmed.
-
-## Documentation
-
-- [Test cases and observed results](docs/test-cases.md)
-- [Troubleshooting and access-request runbooks](docs/runbooks.md)
-- [Evidence inventory](evidence/README.md)
+I built the AD–Okta connection in [Project 04](../04-okta-hybrid-iam/).
 
 ## Evidence gallery
 
-These are cropped screenshots from the lab. The MFA setup QR code is excluded, and System Log event excerpts omit connection IP addresses and detailed identifiers. Click each image to expand. See the [evidence index](evidence/README.md) for a file-by-file description.
+### AIT-1: Application access
 
-### AIT-1 — Application access investigation
-
-<table>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-1-01-jira-request.webp"><img src="evidence/AIT-1-01-jira-request.webp" width="425" alt="Reported access issue recorded in Jira"></a><br><sub>Reported access issue recorded in Jira</sub></td><td width="50%" valign="top"><a href="evidence/AIT-1-02-ad-group-removed.webp"><img src="evidence/AIT-1-02-ad-group-removed.webp" width="425" alt="Front Desk group removed in AD"></a><br><sub>Front Desk group removed in AD</sub></td></tr>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-1-03-okta-assignment-removed.webp"><img src="evidence/AIT-1-03-okta-assignment-removed.webp" width="425" alt="No app assignment after AD import"></a><br><sub>No app assignment after AD import</sub></td><td width="50%" valign="top"><a href="evidence/AIT-1-04-okta-assignment-restored.webp"><img src="evidence/AIT-1-04-okta-assignment-restored.webp" width="425" alt="Group-based assignment restored"></a><br><sub>Group-based assignment restored</sub></td></tr>
-</table>
-
-### AIT-2 — New employee onboarding
+I checked Samuel Ortiz's account, group membership and Front Desk Portal assignment. Everything was in place, so I removed his Front Desk group in AD to reproduce a missing assignment, synchronized the change to Okta, and then restored it. The application assignment disappeared and returned as expected.
 
 <table>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-2-01-jira-onboarding.webp"><img src="evidence/AIT-2-01-jira-onboarding.webp" width="425" alt="Simulated HR onboarding request in Jira"></a><br><sub>Simulated HR onboarding request in Jira</sub></td><td width="50%" valign="top"><a href="evidence/AIT-2-02-ad-role-groups.webp"><img src="evidence/AIT-2-02-ad-role-groups.webp" width="425" alt="Jordan's AD role groups"></a><br><sub>Jordan's AD role groups</sub></td></tr>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-2-03-okta-groups.webp"><img src="evidence/AIT-2-03-okta-groups.webp" width="425" alt="AD groups reflected in Okta"></a><br><sub>AD groups reflected in Okta</sub></td><td width="50%" valign="top"><a href="evidence/AIT-2-04-okta-app-assignment.webp"><img src="evidence/AIT-2-04-okta-app-assignment.webp" width="425" alt="Front Desk Portal assigned through group"></a><br><sub>Front Desk Portal assigned through group</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-1-01-jira-request.webp"><img src="evidence/AIT-1-01-jira-request.webp" width="425" alt="Logged the reported access issue in Jira."></a><br><sub>Logged the reported access issue in Jira.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-1-02-ad-group-removed.webp"><img src="evidence/AIT-1-02-ad-group-removed.webp" width="425" alt="Removed Samuel from the Front Desk group in AD."></a><br><sub>Removed Samuel from the Front Desk group in AD.</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-1-03-okta-assignment-removed.webp"><img src="evidence/AIT-1-03-okta-assignment-removed.webp" width="425" alt="Okta showed no application assignment after import."></a><br><sub>Okta showed no application assignment after import.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-1-04-okta-assignment-restored.webp"><img src="evidence/AIT-1-04-okta-assignment-restored.webp" width="425" alt="The assignment returned after I restored his group membership."></a><br><sub>The assignment returned after I restored his group membership.</sub></td></tr>
 </table>
 
-### AIT-3 — MFA enrollment and recovery
+### AIT-2: Employee onboarding
+
+I created Jordan Ellis's AD account and added the AllStaff and Hamilton Front Desk groups. After the Okta import, Jordan's account was active with both groups and the Front Desk Portal assigned.
 
 <table>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-3-01-no-enrolled-authenticators.webp"><img src="evidence/AIT-3-01-no-enrolled-authenticators.webp" width="425" alt="Initial state: no enrolled authenticators"></a><br><sub>Initial state: no enrolled authenticators</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-02-mfa-success-log.webp"><img src="evidence/AIT-3-02-mfa-success-log.webp" width="425" alt="Successful MFA and user login events before reset"></a><br><sub>Successful MFA and user login events before reset</sub></td></tr>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-3-03-reset-confirmation.webp"><img src="evidence/AIT-3-03-reset-confirmation.webp" width="425" alt="Administrator-initiated reset acknowledged"></a><br><sub>Administrator-initiated reset acknowledged</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-04-reenrollment-prompt.webp"><img src="evidence/AIT-3-04-reenrollment-prompt.webp" width="425" alt="Windows Okta Verify requests re-enrollment"></a><br><sub>Windows Okta Verify requests re-enrollment</sub></td></tr>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-3-05-reenrolled-authenticator.webp"><img src="evidence/AIT-3-05-reenrolled-authenticator.webp" width="425" alt="New Okta Verify enrollment confirmed"></a><br><sub>New Okta Verify enrollment confirmed</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-06-reenrollment-log.webp"><img src="evidence/AIT-3-06-reenrollment-log.webp" width="425" alt="Factor activated and device added successfully"></a><br><sub>Factor activated and device added successfully</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-2-01-jira-onboarding.webp"><img src="evidence/AIT-2-01-jira-onboarding.webp" width="425" alt="Created the onboarding request in Jira."></a><br><sub>Created the onboarding request in Jira.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-2-02-ad-role-groups.webp"><img src="evidence/AIT-2-02-ad-role-groups.webp" width="425" alt="Added Jordan to the two AD security groups."></a><br><sub>Added Jordan to the two AD security groups.</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-2-03-okta-groups.webp"><img src="evidence/AIT-2-03-okta-groups.webp" width="425" alt="Confirmed both groups in Jordan's Okta profile."></a><br><sub>Confirmed both groups in Jordan's Okta profile.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-2-04-okta-app-assignment.webp"><img src="evidence/AIT-2-04-okta-app-assignment.webp" width="425" alt="Confirmed the Front Desk Portal assignment came from the group."></a><br><sub>Confirmed the Front Desk Portal assignment came from the group.</sub></td></tr>
 </table>
 
-### AIT-4 — Privileged-access decision
+### AIT-3: MFA setup and recovery
+
+Hannah Reid had no enrolled authenticator. I installed Okta Verify on Windows 11, enrolled her account and confirmed a successful MFA sign-in in Okta's System Log. I then reset Okta Verify and re-enrolled it. The new enrollment and factor activation appeared in Okta.
 
 <table>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-4-01-jira-privileged-request.webp"><img src="evidence/AIT-4-01-jira-privileged-request.webp" width="425" alt="Super Administrator request in Jira"></a><br><sub>Super Administrator request in Jira</sub></td><td width="50%" valign="top"><a href="evidence/AIT-4-02-no-individual-admin-roles.webp"><img src="evidence/AIT-4-02-no-individual-admin-roles.webp" width="425" alt="No individual Okta admin roles shown"></a><br><sub>No individual Okta admin roles shown</sub></td></tr>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-4-03-jira-cancellation-form.webp"><img src="evidence/AIT-4-03-jira-cancellation-form.webp" width="425" alt="Jira cancellation resolution field blocked closure"></a><br><sub>Jira cancellation resolution field blocked closure</sub></td><td width="50%"></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-3-01-no-enrolled-authenticators.webp"><img src="evidence/AIT-3-01-no-enrolled-authenticators.webp" width="425" alt="Found no enrolled authenticators for Hannah."></a><br><sub>Found no enrolled authenticators for Hannah.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-02-mfa-success-log.webp"><img src="evidence/AIT-3-02-mfa-success-log.webp" width="425" alt="Confirmed a successful MFA sign-in before the reset."></a><br><sub>Confirmed a successful MFA sign-in before the reset.</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-3-03-reset-confirmation.webp"><img src="evidence/AIT-3-03-reset-confirmation.webp" width="425" alt="Reset Hannah's Okta Verify authenticator."></a><br><sub>Reset Hannah's Okta Verify authenticator.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-04-reenrollment-prompt.webp"><img src="evidence/AIT-3-04-reenrollment-prompt.webp" width="425" alt="Okta Verify prompted for re-enrollment on Windows."></a><br><sub>Okta Verify prompted for re-enrollment on Windows.</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-3-05-reenrolled-authenticator.webp"><img src="evidence/AIT-3-05-reenrolled-authenticator.webp" width="425" alt="Confirmed the new enrollment in the Admin Console."></a><br><sub>Confirmed the new enrollment in the Admin Console.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-3-06-reenrollment-log.webp"><img src="evidence/AIT-3-06-reenrollment-log.webp" width="425" alt="System Log confirmed factor activation and device registration."></a><br><sub>System Log confirmed factor activation and device registration.</sub></td></tr>
 </table>
 
-## What I learned
+### AIT-4: Privileged access request
 
-The support process matters as much as the technical change. For each request, I practiced documenting what I checked, separating a user's report from findings, verifying changes in both AD and Okta, and avoiding unnecessary privilege grants.
+Samuel requested Okta Super Administrator access to troubleshoot one application. I reviewed the request, documented the missing approvals and declined the access in the simulated review. His Okta profile showed no individually assigned admin roles. I couldn't complete Jira's cancellation step because its required resolution field wouldn't work.
 
-I also learned to distinguish successful MFA enrollment from successful authentication, and a successful re-enrollment from a separate post-recovery sign-in test.
+<table>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-4-01-jira-privileged-request.webp"><img src="evidence/AIT-4-01-jira-privileged-request.webp" width="425" alt="Logged the Super Administrator request in Jira."></a><br><sub>Logged the Super Administrator request in Jira.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-4-02-no-individual-admin-roles.webp"><img src="evidence/AIT-4-02-no-individual-admin-roles.webp" width="425" alt="Checked Samuel's individually assigned admin roles."></a><br><sub>Checked Samuel's individually assigned admin roles.</sub></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-4-03-jira-cancellation-form.webp"><img src="evidence/AIT-4-03-jira-cancellation-form.webp" width="425" alt="Jira's required resolution field prevented cancellation."></a><br><sub>Jira's required resolution field prevented cancellation.</sub></td><td width="50%"></td></tr>
+</table>
 
-## Scope and limitations
+## Test notes
 
-This project is a personal lab, not employment experience or a production service desk. Jira employee requests, responses, approvals and escalations were simulated. No real HR or Security team authorized the changes. The Okta Bookmark App does not implement real SSO or production authorization. I used manual AD imports and did not measure response-time SLAs, conduct Mac/MDM troubleshooting or test 40 SaaS applications.
+I used an Okta Bookmark App for the Front Desk Portal and ran AD imports manually. The HR onboarding request and access approvals were simulated. I verified MFA sign-in before the authenticator reset, and the new enrollment after it; I did not perform another sign-in after re-enrollment.
 
-Selected screenshots are published in the evidence gallery. They are cropped to relevant results and omit enrollment QR codes. System Log excerpts have connection IP addresses and detailed identifiers removed.
+## Documentation
+
+- [Test results](docs/test-cases.md)
+- [Support runbooks](docs/runbooks.md)
+- [Evidence file index](evidence/README.md)
