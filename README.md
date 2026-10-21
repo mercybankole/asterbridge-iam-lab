@@ -13,6 +13,6 @@ The labs use real configurations and tests in isolated environments. Employee id
 | [03. Access Reviews & IAM Audit](projects/03-access-reviews-iam-audit/) | Access certification, exception detection and remediation | Completed |
 | [04. Hybrid Active Directory & Okta IAM](projects/04-okta-hybrid-iam/) | Azure-hosted AD Agent, Okta imports, delegated authentication and access lifecycle testing | Completed |
 | [05. Non-Human Identity & Service Account Governance](projects/05-non-human-identity-governance/) | Service-account inventory, controlled orphan detection and remediation | Completed |
-| [06. IT Service Management & IAM Support Simulation](projects/06-it-service-management-iam-support/) | Jira service requests, AD/Okta provisioning, MFA recovery and privileged-access review | Case work completed; evidence pending |
+| [06. IT Service Management & IAM Support Simulation](projects/06-it-service-management-iam-support/) | Jira service requests, AD/Okta provisioning, MFA recovery and privileged-access review | Documented with evidence |
 
 **Environment:** Oracle VirtualBox, Windows Server 2022, Windows 10 Pro, Active Directory Domain Services, PowerShell, Azure, Tailscale and Okta.
