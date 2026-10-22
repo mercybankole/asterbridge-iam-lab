@@ -20,7 +20,7 @@ The [Project 06 README](../README.md) shows all 20 screenshots alongside the wor
 | AIT-3 | [AIT-3-06-reenrollment-log.webp](AIT-3-06-reenrollment-log.webp) | System Log confirmed factor activation and device registration. |
 | AIT-4 | [AIT-4-01-jira-privileged-request.webp](AIT-4-01-jira-privileged-request.webp) | Logged the Super Administrator request in Jira. |
 | AIT-4 | [AIT-4-02-no-individual-admin-roles.webp](AIT-4-02-no-individual-admin-roles.webp) | Checked Samuel's individually assigned admin roles. |
-| AIT-4 | [AIT-4-03-jira-cancellation-form.webp](AIT-4-03-jira-cancellation-form.webp) | Jira's required resolution field prevented cancellation. |
+| AIT-4 | [AIT-4-03-jira-cancellation-form.webp](AIT-4-03-jira-cancellation-form.webp) | Reviewed the Jira cancellation form. |
 | Jira triage | [AIT-QUEUE-01-all-open-14-tickets.webp](AIT-QUEUE-01-all-open-14-tickets.webp) | All 14 support requests in the Jira queue. |
 | Jira triage | [AIT-QUEUE-02-triage-ownership-status.webp](AIT-QUEUE-02-triage-ownership-status.webp) | Ticket ownership and status updates after triage. |
 | AIT-5 | [AIT-QUEUE-03-incident-notes-sla.webp](AIT-QUEUE-03-incident-notes-sla.webp) | Customer update, internal investigation note, priority and SLA information. |
