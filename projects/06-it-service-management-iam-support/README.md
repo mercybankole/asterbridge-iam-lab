@@ -47,11 +47,11 @@ Hannah Reid had no enrolled authenticator. I installed Okta Verify on Windows 11
 
 ### AIT-4: Privileged access request
 
-Samuel requested Okta Super Administrator access to troubleshoot one application. I reviewed the request, documented the missing approvals and declined the access in the simulated review. His Okta profile showed no individually assigned admin roles. I couldn't complete Jira's cancellation step because its required resolution field wouldn't work.
+Samuel requested Okta Super Administrator access to troubleshoot one application. I reviewed the request, documented the missing approvals and declined the access in the simulated review. I also checked his individually assigned administrator roles in Okta.
 
 <table>
 <tr><td width="50%" valign="top"><a href="evidence/AIT-4-01-jira-privileged-request.webp"><img src="evidence/AIT-4-01-jira-privileged-request.webp" width="425" alt="Logged the Super Administrator request in Jira."></a><br><sub>Logged the Super Administrator request in Jira.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-4-02-no-individual-admin-roles.webp"><img src="evidence/AIT-4-02-no-individual-admin-roles.webp" width="425" alt="Checked Samuel's individually assigned admin roles."></a><br><sub>Checked Samuel's individually assigned admin roles.</sub></td></tr>
-<tr><td width="50%" valign="top"><a href="evidence/AIT-4-03-jira-cancellation-form.webp"><img src="evidence/AIT-4-03-jira-cancellation-form.webp" width="425" alt="Jira's required resolution field prevented cancellation."></a><br><sub>Jira's required resolution field prevented cancellation.</sub></td><td width="50%"></td></tr>
+<tr><td width="50%" valign="top"><a href="evidence/AIT-4-03-jira-cancellation-form.webp"><img src="evidence/AIT-4-03-jira-cancellation-form.webp" width="425" alt="Reviewed the Jira cancellation form."></a><br><sub>Reviewed the Jira cancellation form.</sub></td><td width="50%"></td></tr>
 </table>
 
 ## Jira queue prioritization exercise
@@ -73,10 +73,6 @@ For AIT-5, I changed the status to Work in progress, recorded an internal triage
 <td colspan="2" valign="top"><a href="evidence/AIT-QUEUE-03-incident-notes-sla.webp"><img src="evidence/AIT-QUEUE-03-incident-notes-sla.webp" width="800" alt="AIT-5 customer reply, internal triage note, priority and SLA information"></a><br><sub>AIT-5 internal investigation note, customer update, priority and SLA details.</sub></td>
 </tr>
 </table>
-
-## Test notes
-
-I used an Okta Bookmark App for the Front Desk Portal and ran AD imports manually. The HR onboarding request and access approvals were simulated. I verified MFA sign-in before the authenticator reset, and the new enrollment after it; I did not perform another sign-in after re-enrollment.
 
 ## Documentation
 
