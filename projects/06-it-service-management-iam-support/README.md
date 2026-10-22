@@ -62,6 +62,18 @@ I reviewed the queue and prioritized tickets based on user impact, urgency, secu
 
 For AIT-5, I changed the status to Work in progress, recorded an internal triage note and sent a customer update requesting error details. I also checked the SLA targets and time-to-resolution information in Jira.
 
+### Jira queue and triage evidence
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="evidence/AIT-QUEUE-01-all-open-14-tickets.webp"><img src="evidence/AIT-QUEUE-01-all-open-14-tickets.webp" width="425" alt="Jira All open queue containing 14 support tickets"></a><br><sub>All 14 requests in the Jira queue.</sub></td>
+<td width="50%" valign="top"><a href="evidence/AIT-QUEUE-02-triage-ownership-status.webp"><img src="evidence/AIT-QUEUE-02-triage-ownership-status.webp" width="425" alt="Jira queue with ticket ownership and work-in-progress statuses"></a><br><sub>Ticket ownership and status updates after triage.</sub></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><a href="evidence/AIT-QUEUE-03-incident-notes-sla.webp"><img src="evidence/AIT-QUEUE-03-incident-notes-sla.webp" width="800" alt="AIT-5 customer reply, internal triage note, priority and SLA information"></a><br><sub>AIT-5 internal investigation note, customer update, priority and SLA details.</sub></td>
+</tr>
+</table>
+
 ## Test notes
 
 I used an Okta Bookmark App for the Front Desk Portal and ran AD imports manually. The HR onboarding request and access approvals were simulated. I verified MFA sign-in before the authenticator reset, and the new enrollment after it; I did not perform another sign-in after re-enrollment.
