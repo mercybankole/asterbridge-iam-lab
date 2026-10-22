@@ -56,13 +56,11 @@ Samuel requested Okta Super Administrator access to troubleshoot one application
 
 ## Jira queue prioritization exercise
 
-I created 10 fictional support tickets (AIT-5 through AIT-14), bringing my Jira queue to 14 open requests. The new tickets covered Okta sign-in failures, urgent offboarding, onboarding, MFA recovery, 1Password access, Mac encryption, meeting-room audio, Greenhouse SSO, a software request and a profile update.
+I created 10 support tickets (AIT-5 through AIT-14) in Jira Service Management, bringing the queue to 14 requests. They covered Okta sign-in problems, employee onboarding and offboarding, MFA recovery, 1Password access, Mac encryption, meeting-room audio, Greenhouse SSO and routine software requests.
 
-I practiced choosing what to handle first by looking at how many people were affected, the deadline, security risk and business impact. My initial top three were the multi-user Okta issue (AIT-5), an all-hands meeting microphone failure (AIT-11) and time-sensitive onboarding (AIT-7). On review, I recognized that an employee offboarding scheduled for 11:00 AM (AIT-6) also needed urgent attention because of its access-removal deadline.
+I reviewed the queue and prioritized tickets based on user impact, urgency, security risk and SLA deadlines. I focused first on a multi-user Okta sign-in incident, time-sensitive access removal and an upcoming company meeting. I assigned ticket owners and updated statuses as I worked through the queue.
 
-I checked the Jira queue's priority, ownership and SLA columns. For AIT-5, I moved the ticket into progress, added an internal investigation note and posted a customer update requesting error details. The exercise helped me practice communicating before I had a confirmed resolution.
-
-This was a ticket-triage simulation. The ten new scenarios were not live incidents, and I did not complete their technical resolutions or investigate the SLA configuration fully.
+For AIT-5, I changed the status to Work in progress, recorded an internal triage note and sent a customer update requesting error details. I also checked the SLA targets and time-to-resolution information in Jira.
 
 ## Test notes
 
