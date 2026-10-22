@@ -2,7 +2,7 @@
 
 ## Overview
 
-I used Jira Service Management, Active Directory and Okta to work through four IT support requests for Asterbridge Care Technologies. I recorded each request in Jira, investigated it and documented the result.
+I used Jira Service Management, Active Directory and Okta to investigate four IT support requests for Asterbridge Care Technologies. I also created 10 additional Jira tickets to practice queue management and decide what needed attention first.
 
 The employees and support requests are fictional. I carried out the technical steps in my Asterbridge lab.
 
@@ -53,6 +53,16 @@ Samuel requested Okta Super Administrator access to troubleshoot one application
 <tr><td width="50%" valign="top"><a href="evidence/AIT-4-01-jira-privileged-request.webp"><img src="evidence/AIT-4-01-jira-privileged-request.webp" width="425" alt="Logged the Super Administrator request in Jira."></a><br><sub>Logged the Super Administrator request in Jira.</sub></td><td width="50%" valign="top"><a href="evidence/AIT-4-02-no-individual-admin-roles.webp"><img src="evidence/AIT-4-02-no-individual-admin-roles.webp" width="425" alt="Checked Samuel's individually assigned admin roles."></a><br><sub>Checked Samuel's individually assigned admin roles.</sub></td></tr>
 <tr><td width="50%" valign="top"><a href="evidence/AIT-4-03-jira-cancellation-form.webp"><img src="evidence/AIT-4-03-jira-cancellation-form.webp" width="425" alt="Jira's required resolution field prevented cancellation."></a><br><sub>Jira's required resolution field prevented cancellation.</sub></td><td width="50%"></td></tr>
 </table>
+
+## Jira queue prioritization exercise
+
+I created 10 fictional support tickets (AIT-5 through AIT-14), bringing my Jira queue to 14 open requests. The new tickets covered Okta sign-in failures, urgent offboarding, onboarding, MFA recovery, 1Password access, Mac encryption, meeting-room audio, Greenhouse SSO, a software request and a profile update.
+
+I practiced choosing what to handle first by looking at how many people were affected, the deadline, security risk and business impact. My initial top three were the multi-user Okta issue (AIT-5), an all-hands meeting microphone failure (AIT-11) and time-sensitive onboarding (AIT-7). On review, I recognized that an employee offboarding scheduled for 11:00 AM (AIT-6) also needed urgent attention because of its access-removal deadline.
+
+I checked the Jira queue's priority, ownership and SLA columns. For AIT-5, I moved the ticket into progress, added an internal investigation note and posted a customer update requesting error details. The exercise helped me practice communicating before I had a confirmed resolution.
+
+This was a ticket-triage simulation. The ten new scenarios were not live incidents, and I did not complete their technical resolutions or investigate the SLA configuration fully.
 
 ## Test notes
 
