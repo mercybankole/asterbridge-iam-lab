@@ -10,7 +10,7 @@ Tools: Okta, Salesforce Developer Edition, SAML 2.0, Salesforce Login History an
 
    <a href="evidence/02-okta-salesforce-app.webp"><img src="evidence/02-okta-salesforce-app.webp" width="610" alt="Okta Salesforce SAML integration and certificate settings"></a>
 
-2. In Salesforce → Setup → Single Sign-On Settings, I tried **New from Metadata URL** using Okta's metadata link. Salesforce returned `Specify a public URL from Remote Site Settings`. I added the Okta domain under Remote Site Settings and retried the import.
+2. In Salesforce → Setup → Single Sign-On Settings, I tried `New from Metadata URL` using Okta's metadata link. Salesforce returned `Specify a public URL from Remote Site Settings`. I added the Okta domain under Remote Site Settings and retried the import.
 
    <a href="evidence/18-metadata-import-remote-site-error.webp"><img src="evidence/18-metadata-import-remote-site-error.webp" width="610" alt="Salesforce metadata import error requesting Remote Site Settings"></a>
 
@@ -80,7 +80,7 @@ Tools: Okta, Salesforce Developer Edition, SAML 2.0, Salesforce Login History an
 
 ## Scenario 5 — SSO works, but Hannah cannot create campaigns
 
-1. Hannah could open Salesforce → Campaigns, but there was no `New` button. I enabled **Marketing User** on her Salesforce account, refreshed, and still couldn't see `New`.
+1. Hannah could open Salesforce → Campaigns, but there was no `New` button. I enabled `Marketing User` on her Salesforce account, refreshed, and still couldn't see `New`.
 2. I checked her Standard User profile. Campaign permissions allowed `Read`, but not `Create` or `Edit`; those standard profile permissions weren't editable.
 
    <a href="evidence/13-salesforce-profile-read-only.webp"><img src="evidence/13-salesforce-profile-read-only.webp" width="610" alt="Standard User profile had Campaign Read but not Create or Edit"></a>
