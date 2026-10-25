@@ -15,5 +15,6 @@ The labs use real configurations and tests in isolated environments. Employee id
 | [05. Non-Human Identity & Service Account Governance](projects/05-non-human-identity-governance/) | Service-account inventory, controlled orphan detection and remediation | Completed |
 | [06. IT Service Management & IAM Support Simulation](projects/06-it-service-management-iam-support/) | Four investigated AD/Okta support cases plus 10 Jira tickets for queue prioritization, SLA review and communication practice | Documented with evidence |
 | [07. Okta–Salesforce SAML SSO & Access Troubleshooting](projects/07-okta-salesforce-saml-sso/) | Real Salesforce SAML SSO, Okta app groups, NameID and issuer errors, multi-user recovery, time-bound Salesforce permissions | Completed |
+| [08. Okta–Salesforce Automated Provisioning](projects/08-okta-salesforce-api-provisioning/) | Salesforce OAuth API integration, account creation, profile updates, deactivation and audit log verification | Completed |
 
 **Environment:** Oracle VirtualBox, Windows Server 2022, Windows 10 Pro, Active Directory Domain Services, PowerShell, Azure, Tailscale, Okta, Salesforce Developer Edition and Jira Service Management.
