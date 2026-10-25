@@ -223,6 +223,77 @@ After refreshing Hannah's Campaigns page, the **New** button appeared. I clicked
 | Shared issuer mismatch and restoration | Passed | SAML Validator identified issuer mismatch; both users recovered |
 | Salesforce object permission change | Passed | Hannah's New Campaign button appeared and a campaign was created |
 
+## Evidence gallery
+
+### SAML integration and employee setup
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="evidence/18-metadata-import-remote-site-error.webp"><img src="evidence/18-metadata-import-remote-site-error.webp" width="430" alt="Salesforce rejected the metadata URL because the Okta domain needed an active Remote Site Settings entry."></a><br><sub>Salesforce rejected the metadata URL because the Okta domain needed an active Remote Site Settings entry.</sub></td>
+<td width="50%" valign="top"><a href="evidence/01-saml-setup.webp"><img src="evidence/01-saml-setup.webp" width="430" alt="Saved Salesforce SAML configuration with the imported identity provider settings."></a><br><sub>Saved Salesforce SAML configuration with the imported identity provider settings.</sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="evidence/02-okta-salesforce-app.webp"><img src="evidence/02-okta-salesforce-app.webp" width="430" alt="Configured the Salesforce application's Sign On settings and certificate in Okta."></a><br><sub>Configured the Salesforce application's Sign On settings and certificate in Okta.</sub></td>
+<td width="50%" valign="top"><a href="evidence/03-salesforce-user-jordan.webp"><img src="evidence/03-salesforce-user-jordan.webp" width="430" alt="Created Jordan as an active Salesforce Standard User."></a><br><sub>Created Jordan as an active Salesforce Standard User.</sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="evidence/04-okta-group-assignment.webp"><img src="evidence/04-okta-group-assignment.webp" width="430" alt="Both employees assigned through the Okta group rather than directly."></a><br><sub>Both employees assigned through the Okta group rather than directly.</sub></td>
+<td width="50%" valign="top"><a href="evidence/05-username-override.webp"><img src="evidence/05-username-override.webp" width="430" alt="Mapped Jordan's Okta application username to his actual Salesforce username."></a><br><sub>Mapped Jordan's Okta application username to his actual Salesforce username.</sub></td>
+</tr>
+</table>
+
+### Initial sign-in troubleshooting
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="evidence/06-okta-password-policy-error.webp"><img src="evidence/06-okta-password-policy-error.webp" width="430" alt="Okta reported a password-change restriction for the AD-sourced employee."></a><br><sub>Okta reported a password-change restriction for the AD-sourced employee.</sub></td>
+<td width="50%" valign="top"><a href="evidence/07-salesforce-sso-disabled.webp"><img src="evidence/07-salesforce-sso-disabled.webp" width="430" alt="Salesforce Login History showed Configuration Error/Perm Disabled on the first SAML attempt."></a><br><sub>Salesforce Login History showed Configuration Error/Perm Disabled on the first SAML attempt.</sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="evidence/08-salesforce-sso-success.webp"><img src="evidence/08-salesforce-sso-success.webp" width="430" alt="A later Salesforce Login History entry showed successful SAML IdP Initiated SSO."></a><br><sub>A later Salesforce Login History entry showed successful SAML IdP Initiated SSO.</sub></td>
+<td width="50%"></td>
+</tr>
+</table>
+
+### Lost application assignment and SAML identity mismatch
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="evidence/09-salesforce-tile-removed.webp"><img src="evidence/09-salesforce-tile-removed.webp" width="430" alt="Removing Jordan from the access group removed the Salesforce tile."></a><br><sub>Removing Jordan from the access group removed the Salesforce tile.</sub></td>
+<td width="50%" valign="top"><a href="evidence/10-saml-subject-mismatch.webp"><img src="evidence/10-saml-subject-mismatch.webp" width="430" alt="SAML Validator showed an unmapped Subject when Okta sent jellis@mydomain.com."></a><br><sub>SAML Validator showed an unmapped Subject when Okta sent jellis@mydomain.com.</sub></td>
+</tr>
+</table>
+
+### Shared SSO outage and recovery
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="evidence/11-issuer-config-break.webp"><img src="evidence/11-issuer-config-break.webp" width="430" alt="Deliberately set an incorrect issuer in the shared Salesforce SAML configuration."></a><br><sub>Deliberately set an incorrect issuer in the shared Salesforce SAML configuration.</sub></td>
+<td width="50%" valign="top"><a href="evidence/12-saml-issuer-mismatch.webp"><img src="evidence/12-saml-issuer-mismatch.webp" width="430" alt="Salesforce Validator identified the issuer mismatch between Okta and Salesforce."></a><br><sub>Salesforce Validator identified the issuer mismatch between Okta and Salesforce.</sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="evidence/19-both-users-recovered.webp"><img src="evidence/19-both-users-recovered.webp" width="430" alt="Two separate sessions after restoring the issuer: Hannah and Jordan both reached Salesforce."></a><br><sub>Two separate sessions after restoring the issuer: Hannah and Jordan both reached Salesforce.</sub></td>
+<td width="50%"></td>
+</tr>
+</table>
+
+### Salesforce permissions and final verification
+
+<table>
+<tr>
+<td width="50%" valign="top"><a href="evidence/13-salesforce-profile-read-only.webp"><img src="evidence/13-salesforce-profile-read-only.webp" width="430" alt="Hannah's Standard User profile allowed Campaign Read, but not Create or Edit."></a><br><sub>Hannah's Standard User profile allowed Campaign Read, but not Create or Edit.</sub></td>
+<td width="50%" valign="top"><a href="evidence/14-permission-set-scoped.webp"><img src="evidence/14-permission-set-scoped.webp" width="430" alt="The Campaign Creator permission set granted Read, Create and Edit without Delete or broad access."></a><br><sub>The Campaign Creator permission set granted Read, Create and Edit without Delete or broad access.</sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="evidence/15-timebound-assignment.webp"><img src="evidence/15-timebound-assignment.webp" width="430" alt="Assigned the permission set only to Hannah, expiring October 31, 2026."></a><br><sub>Assigned the permission set only to Hannah, expiring October 31, 2026.</sub></td>
+<td width="50%" valign="top"><a href="evidence/16-new-campaign-button.webp"><img src="evidence/16-new-campaign-button.webp" width="430" alt="The New button appeared after the effective permission changed."></a><br><sub>The New button appeared after the effective permission changed.</sub></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><a href="evidence/17-campaign-created.webp"><img src="evidence/17-campaign-created.webp" width="430" alt="Hannah created Asterbridge Q4 Sales Outreach – LAB, proving the approved action worked."></a><br><sub>Hannah created Asterbridge Q4 Sales Outreach – LAB, proving the approved action worked.</sub></td>
+<td width="50%"></td>
+</tr>
+</table>
+
 ## Troubleshooting lessons I can explain
 
 - I check where a sign-in fails before changing settings. Jordan's initial problem happened during Okta password verification; the later failures happened at Salesforce.
